@@ -5,7 +5,7 @@ Version: 0.1-0
 Date: 2026-07-10
 Authors@R: c(
     person("Hisashi", "Noma", email = "noma@ism.ac.jp", role = c("aut", "cre")),
-    person("Guido", "Schwarzer", role = "aut"))
+    person("Guido", "Schwarzer", email = "guido.schwarzer@uniklinik-freiburg.de", role = "aut"))
 Maintainer: Hisashi Noma <noma@ism.ac.jp>
 Description: Computational tools for confidence-distribution-propagation-based inference in random-effects meta-analysis. The package implements frequentist prediction intervals for the effect in a future study by propagating uncertainty in the between-study variance through the confidence distribution. It also provides interval estimation for the overall mean effect, between-study variance, between-study standard deviation, and heterogeneity proportion. The implemented methods are described in Noma and Schwarzer (2026).
 Imports: pimeta, metafor

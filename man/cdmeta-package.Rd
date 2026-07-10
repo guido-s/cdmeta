@@ -58,7 +58,7 @@ Conducting meta-analyses in R with the metafor package.
 Authors:
 \itemize{
   \item Hisashi Noma \email{noma@ism.ac.jp}
-  \item Guido Schwarzer
+  \item Guido Schwarzer \email{guido.schwarzer@uniklinik-freiburg.de}
 }
 
 }
