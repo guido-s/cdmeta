@@ -1,0 +1,21 @@
+Package: cdmeta
+Type: Package
+Title: Confidence-Distribution-Based Inference for Random-Effects Meta-Analysis
+Version: 0.1-0
+Date: 2026-07-10
+Authors@R: c(
+    person("Hisashi", "Noma", email = "noma@ism.ac.jp", role = c("aut", "cre")),
+    person("Guido", "Schwarzer", role = "aut"))
+Maintainer: Hisashi Noma <noma@ism.ac.jp>
+Description: Computational tools for confidence-distribution-propagation-based inference in random-effects meta-analysis. The package implements frequentist prediction intervals for the effect in a future study by propagating uncertainty in the between-study variance through the confidence distribution. It also provides interval estimation for the overall mean effect, between-study variance, between-study standard deviation, and heterogeneity proportion. The implemented methods are described in Noma and Schwarzer (2026).
+Imports: pimeta, metafor
+Suggests: meta
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: no
+Packaged: 2026-07-10 07:13:45 UTC; nomah
+Author: Hisashi Noma [aut, cre], Guido Schwarzer [aut]
+Depends: R (>= 4.0.0)
+Config/roxygen2/version: 8.0.0
+Roxygen: list(markdown = TRUE)
