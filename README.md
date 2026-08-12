@@ -69,10 +69,8 @@ data("hf_iron")
 fit_hf <- cdmeta(
   y = hf_iron$yi,
   se = hf_iron$sei,
-  B = 5000,
+  B = 20000,
   seed = 3333,
-  i2_method = "typical_se2",
-  mu_dist = "normal",
   transf = exp,
   transf_name = "exp"
 )
@@ -88,7 +86,6 @@ forest_cdmeta(
   slab = hf_iron$study,
   at = log(c(0.25, 0.5, 1, 2, 4)),
   xlab = "Risk ratio",
-  symmetric_shapes = FALSE,
   mark_summary_estimate = TRUE,
   mark_prediction_estimate = TRUE
 )
@@ -112,10 +109,8 @@ data("af_vka")
 fit_af <- cdmeta(
   y = af_vka$yi,
   se = af_vka$sei,
-  B = 5000,
-  seed = 11111,
-  i2_method = "typical_se2",
-  mu_dist = "normal",
+  B = 20000,
+  seed = 3333,
   transf = exp,
   transf_name = "exp"
 )
@@ -128,7 +123,7 @@ forest_cdmeta(
   order = "weight",
   at = log(c(0.125, 0.25, 0.5, 1, 2)),
   xlab = "Odds ratio",
-  symmetric_shapes = FALSE,
+  main = "Vitamin K antagonists for atrial fibrillation",
   mark_summary_estimate = TRUE,
   mark_prediction_estimate = TRUE
 )
