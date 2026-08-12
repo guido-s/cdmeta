@@ -1,14 +1,1 @@
-README.md
-.travis.yml
-.*[.]Rproj
-.Rproj.user
-.github
-.*[.]pptx
-roxygen2.*[.]R
 ^cran-comments\.md$
-^CRAN-SUBMISSION$
-internal-functions.md
-^.*\.Rproj$
-^\.Rproj\.user$
-^\.positai$
-^\.claude$
