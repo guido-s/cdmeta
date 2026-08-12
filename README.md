@@ -4,7 +4,7 @@ Official Git repository of R package **cdmeta**
 
 [![License: GPL-3](https://img.shields.io/badge/license-GPL--3-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![CRAN Version](https://www.r-pkg.org/badges/version/cdmeta)](https://cran.r-project.org/package=cdmeta)
-[![GitHub develop](https://img.shields.io/badge/develop-0.1--0-purple)](https://img.shields.io/badge/develop-0.1--0-purple)
+[![GitHub develop](https://img.shields.io/badge/develop-1.1--1-purple)](https://img.shields.io/badge/develop-1.1--1-purple)
 [![Monthly Downloads](https://cranlogs.r-pkg.org/badges/cdmeta)](https://cranlogs.r-pkg.org/badges/cdmeta)
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/cdmeta)](https://cranlogs.r-pkg.org/badges/grand-total/cdmeta)
 
@@ -28,7 +28,7 @@ install.packages("cdmeta")
 ```
 -->
 
-### Current [![GitHub develop](https://img.shields.io/badge/develop-0.1--0-purple)](https://img.shields.io/badge/develop-0.1--0-purple) release on GitHub:
+### Current [![GitHub develop](https://img.shields.io/badge/develop-1.1--1-purple)](https://img.shields.io/badge/develop-1.1--1-purple) release on GitHub:
 
 Installation using R package [**remotes**](https://cran.r-project.org/package=remotes):
 
@@ -47,20 +47,22 @@ data(hf_iron)
 fit_hf <- cdmeta(
   y = hf_iron$yi,
   se = hf_iron$sei,
-  B = 10000,
-  seed = 11111,
+  B = 20000,
+  seed = 3333,
   transf = exp,
-  transf_name = "exp")
+  transf_name = "exp"
+)
 
 fit_hf
 
-forest(
+forest_cdmeta(
   fit_hf,
   slab = hf_iron$study,
   at = log(c(0.25, 0.5, 1, 2, 4)),
-  xlab = "Odds ratio",
+  xlab = "Risk ratio",
   mark_summary_estimate = TRUE,
-  mark_prediction_estimate = TRUE)
+  mark_prediction_estimate = TRUE
+)
 ```
 
 ## Bug Reports
