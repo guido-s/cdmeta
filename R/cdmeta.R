@@ -79,6 +79,106 @@
 
 # Main function -------------------------------------------------------------
 
+#' Confidence-distribution-based inference for random-effects meta-analysis
+#'
+#' @description
+#' Performs unified confidence-distribution-based inference for random-effects
+#' meta-analysis. The function provides inference for the overall mean effect
+#' \eqn{\mu}, heterogeneity variance \eqn{\tau^2}, heterogeneity standard
+#' deviation \eqn{\tau}, heterogeneity proportion \eqn{I^2}, and the effect in
+#' a future study \eqn{\theta_{\mathrm{new}}}.
+#'
+#' @param y A numeric vector of study-specific effect estimates (e.g., MD, SMD,
+#'   log OR, log RR, or log HR).
+#' @param se A numeric vector of within-study standard errors of \code{y}.
+#' @param alpha The significance level for interval estimation. Default is 0.05;
+#'   the \code{alpha/2}th and \code{1-alpha/2}th quantiles are used as the lower
+#'   and upper limits of the interval estimates.
+#' @param B The number of Monte Carlo samples. When \code{tau2_samples} is not
+#'   supplied, this value is also passed to \code{pimeta::pima()} as the number
+#'   of bootstrap samples. Default is 25000.
+#' @param seed An optional numeric value that determines the random seed for
+#'   reproducibility. Default is \code{NULL}.
+#' @param parallel Either \code{FALSE} for single-threaded computation or a
+#'   positive integer specifying the number of threads passed to
+#'   \code{pimeta::pima()}. Default is \code{FALSE}.
+#' @param tau2_samples An optional numeric vector of externally supplied
+#'   \eqn{\tau^2} samples. If supplied, \code{pimeta::pima()} is not called.
+#' @param i2_method A character string specifying the reference within-study
+#'   variance used for calculating \eqn{I^2}. Available options are
+#'   \code{"typical_se2"}, \code{"mean_se2"}, and
+#'   \code{"harmonic_mean_se2"}. Default is \code{"typical_se2"}.
+#' @param mu_dist A character string specifying the distribution used for
+#'   conditional sampling of the overall mean effect \eqn{\mu}. Available
+#'   options are \code{"normal"} and \code{"t"}. Default is
+#'   \code{"normal"}.
+#' @param df The degrees of freedom used when \code{mu_dist = "t"}. If
+#'   \code{NULL}, the default is \eqn{K - 1}, where \eqn{K} is the number of
+#'   studies.
+#' @param qtype The quantile type used in \code{stats::quantile()}. Default is 8.
+#' @param transf An optional transformation function applied to effect-scale
+#'   summaries. For example, \code{transf = exp} can be used when \code{y} is
+#'   on the log odds ratio, log risk ratio, or log hazard ratio scale. The
+#'   transformation is applied to \code{mu}, \code{theta_new}, and
+#'   \code{mu_plugin}, but not to heterogeneity measures.
+#' @param transf_name An optional character string giving the name of the
+#'   transformation function. For example, \code{transf_name = "exp"}. If
+#'   \code{NULL}, the name is inferred when possible.
+#' @param ... Additional arguments passed to \code{pimeta::pima()}.
+#'
+#' @details
+#' The function first obtains Monte Carlo samples of the between-study variance
+#' \eqn{\tau^2}. These samples are obtained either from
+#' \code{pimeta::pima(..., method = "boot")} or from a user-supplied vector
+#' \code{tau2_samples}.
+#'
+#' Given sampled values of \eqn{\tau^2}, the function performs conditional
+#' sampling of the overall mean effect. If \code{mu_dist = "normal"}, then
+#' \deqn{\mu \mid \tau^2, y \sim N\{\hat{\mu}(\tau^2), V_{\mu}(\tau^2)\}.}
+#' If \code{mu_dist = "t"}, then a \eqn{t} distribution with \code{df} degrees
+#' of freedom is used instead. The predictive distribution for a future study
+#' effect is then generated as
+#' \deqn{\theta_{\mathrm{new}} \mid \mu, \tau^2 \sim N(\mu, \tau^2).}
+#'
+#' For \eqn{I^2}, the sampled \eqn{\tau^2} values are transformed using a
+#' reference within-study variance specified by \code{i2_method}.
+#'
+#' If \code{transf} is supplied, all calculations are still performed on the
+#' original analysis scale of \code{y}. The transformation is applied after
+#' Monte Carlo sampling. Heterogeneity measures \eqn{\tau^2}, \eqn{\tau}, and
+#' \eqn{I^2} are not transformed.
+#'
+#' @return An object of class \code{"cdmeta"}. The main components include the
+#'   matched call, study and Monte Carlo counts, point estimates, interval
+#'   estimates, Monte Carlo draws, input data, the \code{pimeta} result (when
+#'   used), and transformation information.
+#'
+#' @examples
+#' data(hf_iron)
+#'
+#' fit_hf <- cdmeta(
+#'   y = hf_iron$yi,
+#'   se = hf_iron$sei,
+#'   B = 10000,
+#'   seed = 11111,
+#'   transf = exp,
+#'   transf_name = "exp"
+#' )
+#'
+#' fit_hf
+#'
+#' forest(
+#'   fit_hf,
+#'   slab = hf_iron$study,
+#'   at = log(c(0.25, 0.5, 1, 2, 4)),
+#'   xlab = "Risk ratio",
+#'   mark_summary_estimate = TRUE,
+#'   mark_prediction_estimate = TRUE
+#' )
+#'
+#' @seealso \code{\link{forest}}, \code{\link{plot.cdmeta}}
+#' @export
+
 cdmeta <- function(
   y,
   se,
@@ -507,6 +607,24 @@ cdmeta <- function(
 
 # Print method --------------------------------------------------------------
 
+#' Print a cdmeta object
+#'
+#' @description
+#' Prints point estimates, confidence intervals, and the prediction interval
+#' from an object of class \code{"cdmeta"}.
+#'
+#' @param x An object of class \code{"cdmeta"}.
+#' @param digits The number of digits to print.
+#' @param transf An optional transformation function applied to effect-scale
+#'   summaries for printing.
+#' @param transf_name An optional character string naming \code{transf}.
+#' @param qtype The quantile type used in \code{stats::quantile()}. Default is 8.
+#' @param ... Additional arguments; currently not used.
+#'
+#' @return The input object \code{x}, invisibly.
+#' @method print cdmeta
+#' @export
+
 print.cdmeta <- function(
   x,
   digits = 4,
@@ -670,6 +788,41 @@ print.cdmeta <- function(
 
 
 # Plot method ---------------------------------------------------------------
+
+#' Plot the predictive distribution from a cdmeta object
+#'
+#' @description
+#' Displays the Monte Carlo predictive distribution of the true effect in a
+#' future study and, optionally, its prediction interval.
+#'
+#' @param x An object of class \code{"cdmeta"}.
+#' @param show_interval A logical value indicating whether a separate prediction-
+#'   interval panel is shown below the predictive distribution.
+#' @param breaks Number of histogram breaks or another value accepted by
+#'   \code{graphics::hist()}.
+#' @param main Optional main title.
+#' @param xlab Optional x-axis label.
+#' @param hist_col Fill color of histogram bars.
+#' @param border_col Border color of histogram bars.
+#' @param density_lwd Line width of the kernel density curve.
+#' @param pi_col Color used for prediction-interval and predictive-estimate marks.
+#' @param pi_lwd Line width used for the prediction interval.
+#' @param rug A logical value indicating whether a rug of Monte Carlo draws is
+#'   added.
+#' @param transf Optional transformation function for the predictive draws.
+#' @param transf_name Optional character string naming \code{transf}.
+#' @param qtype The quantile type used in \code{stats::quantile()}. Default is 8.
+#' @param ... Additional arguments passed to \code{graphics::hist()}.
+#'
+#' @return The input object \code{x}, invisibly.
+#'
+#' @examples
+#' data(hf_iron)
+#' fit_hf <- cdmeta(hf_iron$yi, hf_iron$sei, B = 10000, seed = 11111)
+#' plot(fit_hf)
+#'
+#' @method plot cdmeta
+#' @export
 
 plot.cdmeta <- function(
   x,
