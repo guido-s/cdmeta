@@ -81,7 +81,7 @@ fit_hf
 Draw a forest plot on the risk-ratio scale:
 
 ```r
-forest_cdmeta(
+forest(
   fit_hf,
   slab = hf_iron$study,
   at = log(c(0.25, 0.5, 1, 2, 4)),
@@ -117,7 +117,7 @@ fit_af <- cdmeta(
 
 fit_af
 
-forest_cdmeta(
+forest(
   fit_af,
   slab = af_vka$study,
   order = "weight",
