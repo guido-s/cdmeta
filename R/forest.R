@@ -1,10 +1,3 @@
-#' @rdname forest
-#' @export
-forest <- function(x, ...) {
-  UseMethod("forest")
-}
-
-
 #' Forest plot for cdmeta objects
 #'
 #' @description
@@ -12,6 +5,8 @@ forest <- function(x, ...) {
 #' study-specific effect estimates and confidence intervals, the
 #' confidence-distribution-based summary estimate for the overall mean effect,
 #' and optionally the prediction interval for the effect in a future study.
+#'
+#' @aliases forest.cdmeta forest
 #'
 #' @param x An object of class \code{"cdmeta"}.
 #' @param slab An optional character vector of study labels. If \code{NULL},
@@ -108,7 +103,7 @@ forest <- function(x, ...) {
 #' )
 #'
 #' @seealso \code{\link{cdmeta}}
-#' @rdname forest
+#' @rdname forest.cdmeta
 #' @method forest cdmeta
 #' @export
 forest.cdmeta <- function(
@@ -851,4 +846,11 @@ forest.cdmeta <- function(
   )
 
   invisible(plotted)
+}
+
+
+#' @rdname forest.cdmeta
+#' @export
+forest <- function(x, ...) {
+  UseMethod("forest")
 }

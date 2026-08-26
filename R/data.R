@@ -22,7 +22,7 @@
 #'   \item{vi}{Sampling variance of \code{yi}, equal to \code{sei^2}.}
 #' }
 #'
-#' @references
+#' @source
 #' Dogliotti, A., Paolasso, E., and Giugliano, R. P. (2014). Current and new oral
 #' antithrombotics in non-valvular atrial fibrillation: a network meta-analysis
 #' of 79808 patients. \emph{Heart}, \strong{100}(5), 396--405.
@@ -51,7 +51,7 @@
 #'   \item{vi}{Sampling variance of \code{yi}, equal to \code{sei^2}.}
 #' }
 #'
-#' @references
+#' @source
 #' Anker, S. D., et al. (2025). Systematic review and meta-analysis of
 #' intravenous iron therapy for patients with heart failure and iron deficiency.
 #' \emph{Nature Medicine}, \strong{31}, 2640--2646.

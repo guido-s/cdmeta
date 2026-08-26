@@ -20,6 +20,12 @@ A data frame with 6 rows and 11 variables:
   \item{vi}{Sampling variance of \code{yi}, equal to \code{sei^2}.}
 }
 }
+\source{
+Dogliotti, A., Paolasso, E., and Giugliano, R. P. (2014). Current and new oral
+antithrombotics in non-valvular atrial fibrillation: a network meta-analysis
+of 79808 patients. \emph{Heart}, \strong{100}(5), 396--405.
+\doi{10.1136/heartjnl-2013-304347}
+}
 \usage{
 data(af_vka)
 }
@@ -29,11 +35,5 @@ treatments for prevention of stroke in patients with non-valvular atrial
 fibrillation. The dataset includes direct comparisons of vitamin K antagonists
 versus placebo or control, with study-specific log odds ratios and standard
 errors for the stroke outcome.
-}
-\references{
-Dogliotti, A., Paolasso, E., and Giugliano, R. P. (2014). Current and new oral
-antithrombotics in non-valvular atrial fibrillation: a network meta-analysis
-of 79808 patients. \emph{Heart}, \strong{100}(5), 396--405.
-\doi{10.1136/heartjnl-2013-304347}
 }
 \keyword{datasets}

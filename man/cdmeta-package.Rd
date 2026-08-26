@@ -12,8 +12,8 @@ effect and heterogeneity measures.
 }
 \details{
 The main function is \code{\link{cdmeta}}. Forest plots are produced by the
-exported S3 generic \code{\link{forest}}, which dispatches to
-\code{forest.cdmeta()} for objects of class \code{"cdmeta"}.
+exported S3 generic \code{forest}, which dispatches to
+\code{\link{forest.cdmeta}} for objects of class \code{"cdmeta"}.
 }
 \references{
 Higgins, J. P. T., Thompson, S. G., and Spiegelhalter, D. J. (2009).
@@ -34,14 +34,15 @@ package. \emph{Journal of Statistical Software}, \strong{36}(3), 1--48.
 \doi{10.18637/jss.v036.i03}
 }
 \seealso{
-\code{\link{cdmeta}}, \code{\link{forest}}
+\code{\link{cdmeta}}, \code{\link{forest.cdmeta}}
 }
 \author{
-\strong{Maintainer}: Hisashi Noma \email{noma@ism.ac.jp}
+\strong{Maintainer}: Hisashi Noma \email{noma@ism.ac.jp} (\href{https://orcid.org/0000-0002-2520-9949}{ORCID})
 
 Authors:
 \itemize{
-  \item Guido Schwarzer
+  \item Hisashi Noma \email{noma@ism.ac.jp} (\href{https://orcid.org/0000-0002-2520-9949}{ORCID})
+  \item Guido Schwarzer \email{guido.schwarzer@uniklinik-freiburg.de} (\href{https://orcid.org/0000-0001-6214-9087}{ORCID})
 }
 
 }

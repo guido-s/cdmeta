@@ -8,8 +8,8 @@
 #'
 #' @details
 #' The main function is \code{\link{cdmeta}}. Forest plots are produced by the
-#' exported S3 generic \code{\link{forest}}, which dispatches to
-#' \code{forest.cdmeta()} for objects of class \code{"cdmeta"}.
+#' exported S3 generic \code{forest}, which dispatches to
+#' \code{\link{forest.cdmeta}} for objects of class \code{"cdmeta"}.
 #'
 #' @references
 #' Higgins, J. P. T., Thompson, S. G., and Spiegelhalter, D. J. (2009).
@@ -29,7 +29,6 @@
 #' package. \emph{Journal of Statistical Software}, \strong{36}(3), 1--48.
 #' \doi{10.18637/jss.v036.i03}
 #'
-#' @seealso \code{\link{cdmeta}}, \code{\link{forest}}
+#' @seealso \code{\link{cdmeta}}, \code{\link{forest.cdmeta}}
 #' @keywords internal
-#' @aliases cdmeta-package NULL
 "_PACKAGE"

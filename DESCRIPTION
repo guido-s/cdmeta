@@ -1,11 +1,14 @@
 Package: cdmeta
-Type: Package
 Title: Confidence-Distribution-Based Inference for Random-Effects Meta-Analysis
 Version: 1.1-1
-Date: 2026-08-22
+Date: 2026-08-26
 Authors@R: c(
-    person("Hisashi", "Noma", email = "noma@ism.ac.jp", role = c("aut", "cre")),
-    person("Guido", "Schwarzer", role = c("aut"))
+    person("Hisashi", "Noma", role = c("aut", "cre"),
+      email = "noma@ism.ac.jp",
+      comment = c(ORCID = "0000-0002-2520-9949")),
+    person("Guido", "Schwarzer", role = c("aut"),
+      email = "guido.schwarzer@uniklinik-freiburg.de",
+      comment = c(ORCID = "0000-0001-6214-9087"))
     )
 Maintainer: Hisashi Noma <noma@ism.ac.jp>
 Description: Computational tools for confidence-distribution-propagation-based
@@ -26,5 +29,4 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
-Config/roxygen2/version: 8.0.0
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.1.0

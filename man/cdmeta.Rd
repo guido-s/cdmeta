@@ -133,5 +133,5 @@ forest(
 
 }
 \seealso{
-\code{\link{forest}}, \code{\link{plot.cdmeta}}
+\code{\link{forest.cdmeta}}, \code{\link{plot.cdmeta}}
 }

@@ -14,6 +14,12 @@ A data frame with 6 rows and 5 variables:
   \item{vi}{Sampling variance of \code{yi}, equal to \code{sei^2}.}
 }
 }
+\source{
+Anker, S. D., et al. (2025). Systematic review and meta-analysis of
+intravenous iron therapy for patients with heart failure and iron deficiency.
+\emph{Nature Medicine}, \strong{31}, 2640--2646.
+\doi{10.1038/s41591-025-03671-1}
+}
 \usage{
 data(hf_iron)
 }
@@ -22,11 +28,5 @@ A dataset from a systematic review and meta-analysis of randomized trials
 evaluating intravenous iron therapy for patients with heart failure and iron
 deficiency. The outcome is represented by study-specific log risk ratios and
 their standard errors.
-}
-\references{
-Anker, S. D., et al. (2025). Systematic review and meta-analysis of
-intravenous iron therapy for patients with heart failure and iron deficiency.
-\emph{Nature Medicine}, \strong{31}, 2640--2646.
-\doi{10.1038/s41591-025-03671-1}
 }
 \keyword{datasets}

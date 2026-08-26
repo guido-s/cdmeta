@@ -176,7 +176,7 @@
 #'   mark_prediction_estimate = TRUE
 #' )
 #'
-#' @seealso \code{\link{forest}}, \code{\link{plot.cdmeta}}
+#' @seealso \code{\link{forest.cdmeta}}, \code{\link{plot.cdmeta}}
 #' @export
 
 cdmeta <- function(
