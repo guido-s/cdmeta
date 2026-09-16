@@ -187,13 +187,11 @@ fit_external <- cdmeta(
 The methodological article describing the methods implemented in **cdmeta** is publicly available on arXiv:
 
 > Noma H, Schwarzer G. *Frequentist prediction intervals for random-effects meta-analysis via confidence-distribution propagation*. arXiv:2608.26527.  
-> https://arxiv.org/abs/2608.26527  
 > https://doi.org/10.48550/arXiv.2608.26527
 
 The released R package is available from CRAN:
 
 > **cdmeta**: Confidence-Distribution-Based Inference for Random-Effects Meta-Analysis.  
-> https://CRAN.R-project.org/package=cdmeta  
 > https://doi.org/10.32614/CRAN.package.cdmeta
 
 ## Citation
