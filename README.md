@@ -1,15 +1,12 @@
 # cdmeta: Confidence-Distribution-Based Inference for Random-Effects Meta-Analysis
 
 [![License: GPL-3](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![GitHub development version](https://img.shields.io/badge/devel-1.1--1-purple.svg)](https://github.com/guido-s/cdmeta)
-
-<!-- Activate these badges after the first CRAN release.
 [![CRAN status](https://www.r-pkg.org/badges/version/cdmeta)](https://CRAN.R-project.org/package=cdmeta)
 [![Monthly downloads](https://cranlogs.r-pkg.org/badges/cdmeta)](https://cran.r-project.org/package=cdmeta)
 [![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/cdmeta)](https://cran.r-project.org/package=cdmeta)
--->
+[![arXiv](https://img.shields.io/badge/arXiv-2608.26527-b31b1b.svg)](https://arxiv.org/abs/2608.26527)
 
-Development repository for the R package **cdmeta**.
+R package for confidence-distribution-based inference in random-effects meta-analysis.
 
 ## Overview
 
@@ -29,20 +26,28 @@ Empirical quantiles of the resulting Monte Carlo samples provide:
 
 The package also provides forest plots, predictive-distribution plots, optional effect-scale transformations, and example datasets for ratio measures analyzed on the logarithmic scale.
 
+The methodology is described in:
+
+> Noma H, Schwarzer G. *Frequentist prediction intervals for random-effects meta-analysis via confidence-distribution propagation*. arXiv:2608.26527.  
+> https://doi.org/10.48550/arXiv.2608.26527
+
 ## Status
 
-Version **1.1-1** is the current development release. The package is being prepared for submission to CRAN.
+Version **1.1-1** is the current CRAN release.
+
+- CRAN: https://CRAN.R-project.org/package=cdmeta
+- CRAN DOI: https://doi.org/10.32614/CRAN.package.cdmeta
+- GitHub: https://github.com/guido-s/cdmeta
+- arXiv: https://arxiv.org/abs/2608.26527
+
+The GitHub repository contains the development version of the package.
 
 ## Installation
 
-Install the development version directly from GitHub:
+Install the stable version from CRAN:
 
 ```r
-if (!requireNamespace("remotes", quietly = TRUE)) {
-  install.packages("remotes")
-}
-
-remotes::install_github("guido-s/cdmeta")
+install.packages("cdmeta")
 ```
 
 Then load the package:
@@ -51,10 +56,14 @@ Then load the package:
 library(cdmeta)
 ```
 
-After the first CRAN release, the stable version will be installable with:
+To install the development version directly from GitHub:
 
 ```r
-install.packages("cdmeta")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+
+remotes::install_github("guido-s/cdmeta")
 ```
 
 ## Quick start: intravenous iron for heart failure
@@ -171,23 +180,33 @@ fit_external <- cdmeta(
 - `cdmeta()` fits the confidence-distribution propagation model and returns Monte Carlo summaries, intervals, and draws.
 - `print.cdmeta()` prints point estimates, confidence intervals, and the prediction interval.
 - `plot.cdmeta()` displays the predictive distribution of the future true effect.
-- `forest_cdmeta()` produces a forest plot with the pooled effect, prediction interval, and heterogeneity summaries.
+- `forest()` produces a forest plot for a `cdmeta` object, including the pooled effect, prediction interval, and heterogeneity summaries. It dispatches to the `forest.cdmeta()` method.
 
 ## Reproducibility
 
-The accompanying methodological article is:
+The methodological article describing the methods implemented in **cdmeta** is publicly available on arXiv:
 
-> Noma H, Schwarzer G. *Frequentist prediction intervals for random-effects meta-analysis via confidence-distribution propagation*.
+> Noma H, Schwarzer G. *Frequentist prediction intervals for random-effects meta-analysis via confidence-distribution propagation*. arXiv:2608.26527.  
+> https://arxiv.org/abs/2608.26527  
+> https://doi.org/10.48550/arXiv.2608.26527
 
-The arXiv DOI and the permanent repository for the manuscript's simulation and application code will be added after public release.
+The released R package is available from CRAN:
+
+> **cdmeta**: Confidence-Distribution-Based Inference for Random-Effects Meta-Analysis.  
+> https://CRAN.R-project.org/package=cdmeta  
+> https://doi.org/10.32614/CRAN.package.cdmeta
 
 ## Citation
 
-After installation, citation information can be obtained with:
+To cite the **cdmeta** package, use:
 
 ```r
 citation("cdmeta")
 ```
+
+When using the methodology implemented in the package, please also cite:
+
+> Noma H, Schwarzer G. *Frequentist prediction intervals for random-effects meta-analysis via confidence-distribution propagation*. arXiv:2608.26527. https://doi.org/10.48550/arXiv.2608.26527
 
 ## Authors
 
@@ -198,7 +217,7 @@ citation("cdmeta")
 
 Please report bugs and feature requests through the GitHub issue tracker:
 
-<https://github.com/guido-s/cdmeta/issues>
+https://github.com/guido-s/cdmeta/issues
 
 Alternatively, contact the package maintainer, Hisashi Noma, at <noma@ism.ac.jp>.
 
