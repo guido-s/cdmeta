@@ -36,7 +36,6 @@ The methodology is described in:
 Version **1.1-1** is the current CRAN release.
 
 - CRAN: https://CRAN.R-project.org/package=cdmeta
-- CRAN DOI: https://doi.org/10.32614/CRAN.package.cdmeta
 - GitHub: https://github.com/guido-s/cdmeta
 - arXiv: https://arxiv.org/abs/2608.26527
 
